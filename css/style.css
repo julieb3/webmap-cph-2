@@ -111,6 +111,20 @@ table {
             cursor: url(../images/click-waterdrop.png) 10 10, pointer;
             cursor: -webkit-image-set(url(../images/click-waterdrop.png) 1x, url(../images/click-waterdrop@2x.png) 2x) 0 0, pointer;
         }
+        .leaflet-control-attribution {
+            display: none !important;
+          }
+      
+          .copyright-div {
+            position: absolute;
+            bottom: 120px;
+            right: 5px;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 5px;
+            padding: 5px;
+          }
+      
 
 /* ******   MOBILE   ********________________________________________________________________ */
 /* BASICS-------------------------------------------------*/
@@ -129,7 +143,7 @@ table {
 
     #map {
         position: absolute;
-        bottom: 118px;
+        top: 0;
         right: 0;
         left: 0;
         font-family: Arial, Helvetica, sans-serif;

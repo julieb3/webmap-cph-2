@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_лой_2" data-name=" лой 2" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 200 200">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #c8102e;
+      }
+
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2 {
+        fill: #f4f0ea;
+      }
+    </style>
+  </defs>
+  <g id="_лой_1-2" data-name=" лой 1-2">
+    <circle class="cls-2" cx="100" cy="100" r="100"/>
+    <path class="cls-1" d="M93.5,50h81.5v40.7h-81.5v-40.7Z"/>
+    <path class="cls-1" d="M93.4,146.1v-40.7h81.6v40.7h-81.6Z"/>
+    <path class="cls-1" d="M30.7,90.7v-40.6h46.5v40.6H30.7Z"/>
+    <path class="cls-1" d="M30.8,105.3h46.4v40.7H30.8v-40.7Z"/>
+  </g>
+</svg>

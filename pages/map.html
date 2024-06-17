@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Copenhagen Water Network</title>
+    
+    <!-- Font linking... -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">    
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+    <!-- Linking to our style sheet and the bootsrap css styles -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/flexboxgrid.css">
+
+    <!-- For if we need a lot of javascript -->
+    <script src="../js/scripts.js"></script>
+
+    <!-- The random stuff that was in here before... -->
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- Load Leaflet from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+    <!-- Load Leaflet.markercluster from CDN -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+    <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster-src.js"></script>
+
+    <!-- Load Esri Leaflet from CDN -->
+    <script src="https://unpkg.com/esri-leaflet@3.0.12/dist/esri-leaflet.js"></script>
+    <script src="https://unpkg.com/esri-leaflet-vector@4.2.3/dist/esri-leaflet-vector.js"></script>
+
+    <!-- Load Leaflet Control Search plugin -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+    <!-- Load Leaflet Routing Machine -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.css" />
+    <script src="https://unpkg.com/leaflet-routing-machine/dist/leaflet-routing-machine.js"></script>
+
+    <!-- Load Leaflet Control Legend plugin -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-legend/dist/leaflet-control-legend.css" />
+    <script src="https://unpkg.com/leaflet-control-legend/dist/leaflet-control-legend.js"></script>
+
+    <!-- Load Leaflet Geolocation Control plugin -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.css" />
+    <script src="https://unpkg.com/leaflet.locatecontrol/dist/L.Control.Locate.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <header>
+      <h1 class="mobile-only my-title">Copenhagen Water Network</h1>
+      <nav>
+          <ul class="flexin">
+              <a class="desktop-only my-title" href="../index.html">Copenhagen Water Map <img src="../images/logo_mermaid2.svg" alt="An illustration of a mermaid"> </a>
+              <a class="current"><li>map</li></a>
+              <a class="mobile-only" href="../index.html"><img src="../images/logo_mermaid2.svg" alt="An illustration of a mermaid"></a>
+              <a href="#my-footer"><li>sources</li></a>
+          </ul>
+      </nav>
+    </header>
+
+    <div id="map" style="width: 100%; height: 600px;"></div>
+    <script>
+      const southWest = L.latLng(55.528, 12.376),
+            northEast = L.latLng(55.839, 12.730),
+            bounds = L.latLngBounds(southWest, northEast);
+      const map = L.map("map", {
+        minZoom: 10,
+        maxZoom: 18,
+        maxBounds: bounds
+      });
+    
+      map.setView([55.68270923835285, 12.580772656184847], 13);
+    
+      const apiKey = "AAPK3cfa941c1a374bc7b6276f09068109a4-xZs_tTNqYjqGQTbLNNcyxfFh4wpW8wALwH1-Zs0c9tLGv2YKHrHjFyePuqKpp2g";
+    
+      // Basemap layer
+      const basemapEnum = "44e260d5dd834f428d92322c5e1fe2c5";
+      const basemapLayer = L.esri.Vector.vectorBasemapLayer(basemapEnum, {
+        apiKey: apiKey
+      }).addTo(map);
+    
+      // Create Layer Groups for GeoJSON layers
+      const fountainLayer = L.layerGroup();
+      const drinkingPostLayer = L.layerGroup();
+      const swimmingHallLayer = L.layerGroup();
+      const badezoneLayer = L.layerGroup();
+    
+      // GeoJSON layers
+      const geojsonLayers = [
+        {
+          id: "Fountain",
+          url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/waterinstallations_Cleaning/FeatureServer/1",
+          apiKey: apiKey,
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
+              icon: L.icon({
+                iconUrl: '../images/fountain.svg',
+                iconSize: [20, 20],
+                iconAnchor: [15, 15]
+              }),
+              title: "Fountain"
+            });
+          },
+          onEachFeature: function (feature, layer) {
+            if (feature.properties) {
+              let popupContent = "";
+              for (let prop in feature.properties) {
+                popupContent += `<b>${prop}:</b> ${feature.properties[prop]}<br>`;
+              }
+              layer.bindPopup(popupContent);
+            }
+          }
+        },
+        {
+          id: "Drinking Post",
+          url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/CPH_Drinking_Post/FeatureServer/15",
+          apiKey: apiKey,
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
+              icon: L.icon({
+                iconUrl: '../images/hydrant.svg',
+                iconSize: [20, 20],
+                iconAnchor: [15, 15]
+              }),
+              title: "Drinking Post"
+            });
+          },
+          onEachFeature: function (feature, layer) {
+            if (feature.properties) {
+              let popupContent = "";
+              for (let prop in feature.properties) {
+                popupContent += `<b>${prop}:</b> ${feature.properties[prop]}<br>`;
+              }
+              layer.bindPopup(popupContent);
+            }
+          }
+        },
+        {
+          id: "Swimming Hall",
+          url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/Swimminghall_Cleaning/FeatureServer/2",
+          apiKey: apiKey,
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
+              icon: L.icon({
+                iconUrl: '../images/swim.svg',
+                iconSize: [20, 20],
+                iconAnchor: [15, 15]
+              }),
+              title: "Swimming Hall"
+            });
+          },
+          onEachFeature: function (feature, layer) {
+            if (feature.properties) {
+              let popupContent = "";
+              for (let prop in feature.properties) {
+                popupContent += `<b>${prop}:</b> ${feature.properties[prop]}<br>`;
+              }
+              layer.bindPopup(popupContent);
+            }
+          }
+        },
+        {
+          id: "Badezone",
+          url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/Badezone_Denmark_EEA_XYTableToPoint/FeatureServer/0",
+          apiKey: apiKey,
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
+              icon: L.icon({
+                iconUrl: '../images/bath.svg',
+                iconSize: [20, 20],
+                iconAnchor: [15, 15]
+              }),
+              title: "Badezone"
+            });
+          },
+          onEachFeature: function (feature, layer) {
+            if (feature.properties) {
+              let popupContent = "";
+              for (let prop in feature.properties) {
+                popupContent += `<b>${prop}:</b> ${feature.properties[prop]}<br>`;
+              }
+              layer.bindPopup(popupContent);
+            }
+          }
+        }
+      ];
+    
+      // Add GeoJSON layers to respective Layer Groups
+      geojsonLayers.forEach(layer => {
+        const geojsonLayer = L.esri.featureLayer({
+          url: layer.url,
+          apiKey: layer.apiKey,
+          pointToLayer: layer.pointToLayer,
+          onEachFeature: layer.onEachFeature
+        });
+    
+        switch (layer.id) {
+          case "Fountain":
+            geojsonLayer.addTo(fountainLayer);
+            break;
+          case "Drinking Post":
+            geojsonLayer.addTo(drinkingPostLayer);
+            break;
+          case "Swimming Hall":
+            geojsonLayer.addTo(swimmingHallLayer);
+            break;
+          case "Badezone":
+            geojsonLayer.addTo(badezoneLayer);
+            break;
+          default:
+            break;
+        }
+      });
+    
+      // Define your layer names with HTML for the icons
+      const overlayMapsWithIcons = {
+        "<img src='../images/fountain.svg' width='20px' height='20px'> Fountain": fountainLayer,
+        "<img src='../images/hydrant.svg' width='20px' height='20px'> Drinking Post": drinkingPostLayer,
+        "<img src='../images/swim.svg' width='20px' height='20px'> Swimming Hall": swimmingHallLayer,
+        "<img src='../images/bath.svg' width='20px' height='20px'> Badezone": badezoneLayer,
+      };
+    
+      // Add layer control with initial settings
+      var layerControl = L.control.layers(null, overlayMapsWithIcons, {
+        collapsed: false, // Keeps the control panel open by default
+        autoZIndex: false, // Ensures that all layers are turned off initially
+        checked: true // Ensure all layers are checked initially
+      }).addTo(map);
+    
+      // Add current location control
+      L.control.locate().addTo(map);
+    
+      // Add search control
+      L.Control.geocoder({
+        geocodeResult: function(result) {
+          if (map.options.maxBounds.contains(result.center)) {
+            this._map.fitBounds(result.bbox);
+          } else {
+            alert("The location you selected is outside the bounds of the map.");
+          }
+        }
+      }).addTo(map);
+    </script>
+    
+    
+    
+    
+
+    <!--<footer id="my-footer">-->
+    <!--</footer>-->
+  </body>
+</html>

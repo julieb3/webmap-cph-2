@@ -1,0 +1,155 @@
+<!-- Snacks for later
+- srcset=""  -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <!-- CPH Summer Water Network -->
+        <title></title> 
+        
+        <!-- Font linking... -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&display=swap" rel="stylesheet">    
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <!-- Linking to our style sheet and the bootsrap css styles -->
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/flexboxgrid.css">
+
+        <!-- For if we need a lot of javascript -->
+        <script src="js/scripts.js"></script>
+        </head>
+
+    <body>
+        <header>
+            <h1 class="mobile-only my-title"> Copenhagen Water Map</h1>
+            <nav>
+                <ul class="flexin">
+                    <a class="desktop-only my-title">Copenhagen Water Map <img src="images/logo_mermaid2.svg" alt="An illustration of a mermaid"> </a>
+                    <a href="pages/map.html"><li ">map</li></a>
+                    <a class="mobile-only">  <img src="images/logo_mermaid2.svg" alt="An illustration of a mermaid"></a>
+                    <a href="#my-footer"><li >sources</li></a>
+                </ul>
+            </nav>
+        </header>
+
+        <div class="blueback">
+            <div class="container-fluid">
+                <section class="row">
+
+                        <h4 class="col-xs-12 col-sm-6 t-on-blue ">127.045 Webmapping</h4>
+                        <!-- <h4 class="col-xs-6 col-md-3 start-xs t-on-blue ">June 10th, 2024</h4> -->
+                        <h4 class="col-xs-12 col-sm-6 start-xs end-sm t-on-blue ">Project by Maddy, Will, Tanya, and Juliette</h4>
+                 </section>
+            </div>
+        </div>
+
+        <!-- <div class="beach-ball-container">
+            <img id="beach-ball" class="beach-ball" src="images/beachball.svg" alt="Beach Ball">
+        </div> -->
+
+        <img src="images/beachball.svg" alt="Beach Ball" class="beach-ball" id="beach-ball">
+
+        <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1221.08 93.75" preserveAspectRatio="xMidyMin">
+            <path class="cls-1" d="M0,58C165.54,4.72,298.04-.52,386.17,3.76c233.85,11.36,355.87,98.85,617.94,89.26,94.26-3.45,170.25-18.59,216.97-29.84V0H0v58Z"/>
+        </svg>
+
+        <div class="container-fluid">
+            <section class="row">
+                <!-- I added these weird empty columns so that the title would sit where I wanted it to- Juliette -->
+                <div class="col-md-1 desktop-only"></div>
+                <div class="col-xs-10 col-sm-8 col-md-6"> 
+                    <h2>Finding your refreshment</h2>
+                    <p>Welcome to our water map of Copenhagen, Denmark. This city's waterways weave through urban life, 
+                        creating a unique tapestry of culture, recreation, and sustainability. <br>  
+                        Explore the intricate network of canals and harbors that define our city's landscape, 
+                        offering both practical transport routes and stunning scenic vistas. In the summertime, 
+                        Copenhagen's waters come alive with activity. From kayaking through historic canals to 
+                        swimming in pristine harbor baths, there's no better way to experience the charm and 
+                        vitality of our city. Dive into a summer of unforgettable water adventures and discover 
+                        why Copenhagen is the perfect destination for water lovers. </p>
+                </div>
+
+                <div class="col-md-5 col-sm-4 desktop-only">
+                    <!-- Drink -->
+                    <div class="flip-container hydrant">
+                        <div class="flipping-item flipping-item-front">
+                            <img class=" front" src="images/hydrant.svg" alt="bath-clickable">
+                        </div>
+                        <div class="flipping-item flipping-item-back">
+                            <img class="back" src="images/hydrant-back.svg" alt="another-image">
+                        </div>
+                    </div>
+
+                    <!-- Bade -->
+                    <div class="flip-container bath ">
+                        <div class="flipping-item flipping-item-front">
+                            <img class="front" src="images/bath.svg" alt="bath-clickable">
+                        </div>
+                        <div class="flipping-item flipping-item-back">
+                            <img class="back" src="images/bath-back.svg" alt="another-image">
+                        </div>
+                    </div>
+
+                    <!-- Fountain -->
+                    <div class="flip-container fountain ">
+                        <div class="flipping-item flipping-item-front">
+                            <img class="front" src="images/fountain.svg" alt="fountain-clickable">
+                        </div>
+                        <div class="flipping-item flipping-item-back">
+                            <img class="back" src="images/fountain-back.svg" alt="another-image">
+                        </div>
+                    </div>
+                
+                    
+
+                    <!-- Swim hall -->
+                    <div class="flip-container swim ">
+                        <div class="flipping-item flipping-item-front">
+                            <img class="front" src="images/swim.svg" alt="bath-clickable">
+                        </div>
+                        <div class="flipping-item flipping-item-back">
+                            <img class="back" src="images/swim-back.svg" alt="another-image">
+                        </div>
+                    </div>
+
+                </div>
+                
+            </section>
+        </div>
+                    
+
+            <section class="row">
+                
+            </section>
+
+            <section class="row">
+                
+            </section>
+
+        
+        <footer id="my-footer">
+            <div class="container-fluid">
+                <div class="row">
+                    
+                </div>
+            </div>
+
+        </footer>
+        <script src="script/bouncingBall.js"></script>
+    </body>
+</html>
+
+
+
+<!-- THE GRAVEYARD
+
+<img class="fishy" src="images/hov-tail.svg" alt="a little whale tail that appears on hover"> 
+
+-->

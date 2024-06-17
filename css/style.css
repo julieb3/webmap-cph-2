@@ -1,0 +1,497 @@
+/*RESET*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/*AUTOFILL RESET*/
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: none;
+  -webkit-text-fill-color: var(--color-accent);
+  -webkit-box-shadow: 0 0 0px 1000px var(--color-main) inset;
+  transition: background-color 5000s ease-in-out 0s;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* ******   TYPOGRAPHY   ********________________________________________________________________ */
+
+    /* probably wont need these but here anyway!  */
+    .pf-body {
+        font-family: "Raleway", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+    .pf-title{
+        font-family: "Playfair Display", serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+  
+/* ******   VARIABLES   ********________________________________________________________________ */
+    :root {
+        --title-font: "Playfair Display", serif;
+        --body-font: "Raleway", sans-serif;
+
+        /* Use this for fontweight to make it bold! */
+        --supa-bold: 900;
+        --bolden: 700;
+        --regular: 500;
+
+        --col-back: #FFFDFA;
+        --col-text: #292929;
+
+        --col-prim: #00A6FB;
+        --col-p-light: #6cceff;
+        --col-sec: #F4F0EA;
+        --col-accent: #C8102E;
+
+        --hov-opac: 60%;
+
+        /* change to something else?? */
+        --col-link: cyan; 
+
+    }
+
+
+  /* CURSOR-------------------------------------------------*/
+    html,body{
+        cursor: url(../images/waterdrop.png) 10 10, pointer;
+        cursor: url(../images/waterdrop.png) 10 10, pointer;
+        cursor: -webkit-image-set(url(../images/waterdrop.png) 1x, url(../images/waterdrop@2x.png) 2x) 0 0, pointer;
+        }
+        a{
+            cursor: url(../images/click-waterdrop.png) 10 10, pointer;
+            cursor: url(../images/click-waterdrop.png) 10 10, pointer;
+            cursor: -webkit-image-set(url(../images/click-waterdrop.png) 1x, url(../images/click-waterdrop@2x.png) 2x) 0 0, pointer;
+        }
+
+/* ******   MOBILE   ********________________________________________________________________ */
+/* BASICS-------------------------------------------------*/
+    .mobile-only{
+        display: flex;
+    }
+    .desktop-only{
+        display: none;
+    }
+    .flexin{
+        display: flex;
+    }
+    .blockin{
+        flex-direction: column;
+    }
+
+    #map {
+        position: absolute;
+        bottom: 118px;
+        right: 0;
+        left: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 14px;
+        color: #323232;
+        z-index: -1;
+
+        top: 70px;
+      }
+
+
+    html {
+        background-color: var(--col-back);
+        color: var(--col-text);
+        font-family: var(--body-font);
+        font-size: 16px;
+        background-color: #fff8ea;
+        scroll-behavior: smooth;
+    }
+    body{
+        margin: 0;
+        padding: 0;
+    }
+
+    .beach-ball {
+        position: fixed;
+        top: 0;
+        left: 200px;
+        width: 40px;
+        height: auto;
+        z-index: 10;
+        /* transform: translateX(-50%); */
+        cursor: pointer; /* Change cursor to pointer to indicate it's interactive */
+    }
+
+    /* Hello! REM in font sizing means whatever the HTML is set to so 1rem= 14px and an em is based on the parent container
+        https://www.digitalocean.com/community/tutorials/css-rem-vs-em-units */
+
+        /* REM REF- 
+        10px = 0.625rem
+        12px = 0.75rem
+        14px = 0.875rem
+        16px = 1rem (base)
+        18px = 1.125rem
+        20px = 1.25rem
+        24px = 1.5rem
+        30px = 1.875rem
+        32px = 2rem */
+
+    a {
+        color: var(--col-link);
+    }
+
+    h1, h2, h3, h4{
+        color: var(--col-prim);
+    }
+
+    h1, h2{
+        font-weight: var(--supa-bold);
+        font-family: var(--title-font);
+    }
+
+    p{
+        font-size: 1rem;
+    }
+    
+    h2, h3{
+        font-size: 1.8rem;
+        line-height: 175%;
+        margin: 20px 0;
+    }
+
+    h1{
+        font-size: 1.8rem;
+    }
+
+    h3{
+        font-weight: var(--bolden);
+        font-family: var(--title-font);
+    }
+    h4{
+        font-weight: 600;
+        font-family: var(--body-font);
+        font-size: 1.2rem;
+        
+    }
+    section{
+        /* If you put 2 values it is top/bottom, left/right (see below). If you put 4 values it means top, left, bottom, right.  */
+        padding: 1rem 0;
+    }
+
+    .cls-1{fill:var(--col-p-light);stroke-width:0px;}
+    .blueback{
+        background-color: var(--col-p-light);
+    }
+    .t-on-blue{
+        color: var(--col-back);
+        margin: 10px 0;
+    }
+
+    .flip-container{
+        /* perspective: 1000px; */
+        width: fit-content;
+        /* display: inline-block; */
+        top: 0; /* Align to the top */
+        left: 0; /* Align to the left */
+        width: 100%; /* Ensure they cover the entire container */
+        /* width: fit-content; */
+        /* display: inline-block; */
+    }
+
+    .flipping-item-front, .flipping-item-back {
+        transition: transform 0.5s;
+        transform-style: preserve-3d;
+        position: absolute; /* Stack items absolutely within the container */
+        top: 0; /* Align to the top */
+        left: 0; /* Align to the left */
+        width: 100%; /* Ensure they cover the entire container */
+        height: 100%; /* Ensure they cover the entire container */   
+    }
+    .flipping-item-front{
+        opacity: 1;
+        z-index: 2;
+        transform: rotateY(0deg);
+    }
+
+      .flipping-item-back {
+        transform: rotateY(180deg);
+        opacity: 0; 
+    }
+
+    .flip-container:hover .flipping-item-front {
+        transform: rotateY(180deg);
+        opacity: 0;
+        pointer-events: none;
+    }
+      .flipping-container-back {
+        transform: rotateY(180deg);
+    }
+
+    .flip-container:hover .flipping-item-back {
+        transform: rotateY(360deg);
+        display: block;
+        opacity: 1; 
+        z-index: 1; 
+    }
+    
+    .fountain{
+        width: 120%;
+        height: fit-content;
+        position: relative;
+        top: 50px;
+        left: -100px;
+    }
+
+    .bath{
+        width: 150%;
+        height: fit-content;
+        position: relative;
+        top: 200px;
+        left: -50px;
+    }
+
+    .hydrant{
+        width: 200%;
+        height: fit-content;
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+    .swim{
+        width: 100%;
+        position: relative;
+        top: 180px;
+        left: -80px;
+    }
+
+
+/* HEADER/ NAV-------------------------------------------------*/
+/* If you dont like colours we can change- this is just a temporary setup! */
+    nav, a{
+        text-decoration: none;
+        color: var(--col-sec);
+
+        /* add this back in when responsive glitch is resolved-- */
+        /* font-weight: var(--supa-bold); */
+
+        font-size: 1.5rem;
+    }
+    nav{
+        background-color: var(--col-prim);
+        overflow: hidden;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding: .5rem;
+        z-index: 4;
+    }
+    nav a img{
+        padding: .2rem;
+        width: 100px;
+    }
+
+    .my-title{
+        font-weight: var(--supa-bold);
+        font-family: var(--title-font);
+        font-size: 2rem;
+        justify-content: center;
+        padding: 1rem;
+        
+
+    }
+    nav ul{
+        align-items: end;
+        justify-content: center;
+    }
+    nav li:hover{
+        opacity: var(--hov-opac);
+    }
+
+
+
+/* HOMEPAGE+-------------------------------------------------*/
+
+    /* HERO+-------------------------------------------------*/
+
+
+
+/* ABOUT-------------------------------------------------*/
+
+
+/* MAP-------------------------------------------------*/
+
+
+
+/* STORYLINE-------------------------------------------------*/
+
+
+
+/* FOOTER-------------------------------------------------*/
+footer{ 
+    height: 200px;
+}
+
+
+/* ******   TAB AND DESKTOP  ********________________________________________________________________ */
+@media only screen and (min-width: 768px) {
+    .mobile-only{
+        display: none;
+    }
+    .desktop-only{
+        display: flex;
+    }
+/* BASICS-------------------------------------------------*/
+    h1{
+        font-size: 3.75rem;
+    }
+    h2{
+        font-size: 3rem;
+    }
+
+    h3{
+        font-size: 2.125rem;
+    }
+
+
+
+/* HEADER-------------------------------------------------*/
+    .my-title{
+        font-size: 2.75rem;
+        
+    }
+    nav a img{
+        width: 50px;
+        padding: 0 1rem;
+    }
+    nav a{
+        padding: 1rem;
+        font-size: 1.5rem;
+    }
+
+
+/* HOMEPAGE+-------------------------------------------------*/
+
+    /* HERO+-------------------------------------------------*/
+
+
+
+/* ABOUT-------------------------------------------------*/
+
+
+/* MAP-------------------------------------------------*/
+    #map{
+        top: 0px;
+    }
+
+
+/* STORYLINE-------------------------------------------------*/
+
+
+
+/* FOOTER-------------------------------------------------*/
+
+
+}
+
+
+/* ******   DESKTOP ONLY  ********________________________________________________________________ */
+@media only screen and (min-width: 992px) {
+/* BASICS-------------------------------------------------*/
+
+p{
+    /* REM REF- 
+    10px = 0.625rem
+    12px = 0.75rem
+    14px = 0.875rem
+    16px = 1rem (base)
+    18px = 1.125rem
+    20px = 1.25rem
+    24px = 1.5rem
+    30px = 1.875rem
+    32px = 2rem */
+
+    font-size: 1rem;
+    line-height: 150%;
+}
+
+/* HEADER-------------------------------------------------*/
+/* mermaid logo spacing */
+    nav a img{
+        width: 70px;
+    }
+    .my-title{
+        font-size: 4rem;
+        
+    }
+    
+
+
+/* HOMEPAGE+-------------------------------------------------*/
+
+    /* HERO+-------------------------------------------------*/
+
+
+
+/* ABOUT-------------------------------------------------*/
+
+
+/* MAP-------------------------------------------------*/
+
+
+
+/* STORYLINE-------------------------------------------------*/
+
+
+
+/* FOOTER-------------------------------------------------*/
+
+
+
+
+
+}

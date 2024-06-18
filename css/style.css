@@ -150,7 +150,6 @@ table {
         font-size: 14px;
         color: #323232;
         z-index: -1;
-
         top: 70px;
       }
 
@@ -360,6 +359,7 @@ table {
         padding: .5rem;
         z-index: 4;
     }
+
     nav a img{
         padding: .2rem;
         width: 100px;
@@ -413,6 +413,7 @@ footer{
     padding: 25px 10px 175px 10px;
     background-color: var(--col-p-light);
     color: white;
+    top: 120px;
 }
 footer p{
     font-size: .8rem;
@@ -486,7 +487,7 @@ footer h2{
 /* FOOTER-------------------------------------------------*/
 
     footer{
-        margin-top: 60px;
+        margin-top: 400px;
     }
 
 

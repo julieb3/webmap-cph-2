@@ -321,7 +321,17 @@ table {
         left: -80px;
     }
 
-
+    #language-select {
+        font-family: 'Raleway', sans-serif;
+        color: var(--col-prim);
+        background-color: var(--col-sec);
+        font-size: 16px;
+        font-weight: 600;
+        padding: 5px 10px;
+        width: 120px;
+        border-radius: 15px; 
+        border: 2px solid var(--col-prim);
+    }
 /* HEADER/ NAV-------------------------------------------------*/
 /* If you dont like colours we can change- this is just a temporary setup! */
     nav, a{

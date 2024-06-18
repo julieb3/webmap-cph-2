@@ -58,218 +58,194 @@
       <h1 class="mobile-only my-title">Copenhagen Water Network</h1>
       <nav>
           <ul class="flexin">
-              <a class="desktop-only my-title" href="../index.html">Copenhagen Water Network <img src="../images/logo_mermaid2.svg" alt="An illustration of a mermaid"> </a>
+              <a class="desktop-only my-title" href="../index.html">Copenhagen Water Map <img src="../images/logo_mermaid2.svg" alt="An illustration of a mermaid"> </a>
               <a class="current"><li>map</li></a>
               <a class="mobile-only" href="../index.html"><img src="../images/logo_mermaid2.svg" alt="An illustration of a mermaid"></a>
               <a href="#my-footer"><li>sources</li></a>
           </ul>
       </nav>
     </header>
-    <div>
-      <div id="map" style="width: 100%; height: calc(100% - 115px);"></div>
-        <div class="copyright-div">
-      <p>Leaflet, Esri, Open Data DK, European Environment Agency</p>
-      </div>
-      <script>
-        const southWest = L.latLng(55.528, 12.376),
-              northEast = L.latLng(55.839, 12.730),
-              bounds = L.latLngBounds(southWest, northEast);
-        const map = L.map("map", {
-          minZoom: 10,
-          maxZoom: 18,
-          maxBounds: bounds
-        });
-      
-        map.setView([55.68270923835285, 12.580772656184847], 13);
-      
-        const apiKey = "AAPK3cfa941c1a374bc7b6276f09068109a4-xZs_tTNqYjqGQTbLNNcyxfFh4wpW8wALwH1-Zs0c9tLGv2YKHrHjFyePuqKpp2g";
-      
-        // Basemap layer
-        const basemapEnum = "44e260d5dd834f428d92322c5e1fe2c5";
-        const basemapLayer = L.esri.Vector.vectorBasemapLayer(basemapEnum, {
-          apiKey: apiKey
-        }).addTo(map);
-      
-        // Create Layer Groups for GeoJSON layers
-        const fountainLayer = L.layerGroup();
-        const drinkingPostLayer = L.layerGroup();
-        const swimmingHallLayer = L.layerGroup();
-        const badezoneLayer = L.layerGroup();
-      
-        // GeoJSON layers
-        const geojsonLayers = [
-          {
-            id: "Fountain",
-            url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/waterinstallations_Cleaning/FeatureServer/1",
-            apiKey: apiKey,
-            pointToLayer: function (feature, latlng) {
-              return L.marker(latlng, {
-                icon: L.icon({
-                  iconUrl: '../images/fountain.svg',
-                  iconSize: [20, 20],
-                  iconAnchor: [15, 15]
-                }),
-                title: "Fountain"
-              });
-            },
-            onEachFeature: function (feature, layer) {
-              if (feature.properties) {
-                let popupContent = "";
-                for (let prop in feature.properties) {
-                  popupContent += `<b>${prop}:</b> ${feature.properties[prop]}<br>`;
-                }
-                layer.bindPopup(popupContent);
-              }
-            }
-          },
-          {
-            id: "Drinking Post",
-            url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/CPH_Drinking_Post/FeatureServer/15",
-            apiKey: apiKey,
-            pointToLayer: function (feature, latlng) {
-              return L.marker(latlng, {
-                icon: L.icon({
-                  iconUrl: '../images/hydrant.svg',
-                  iconSize: [20, 20],
-                  iconAnchor: [15, 15]
-                }),
-                title: "Drinking Post"
-              });
-            },
-            onEachFeature: function (feature, layer) {
-              if (feature.properties) {
-                let popupContent = "";
-                for (let prop in feature.properties) {
-                  popupContent += `<b>${prop}:</b> ${feature.properties[prop]}<br>`;
-                }
-                layer.bindPopup(popupContent);
-              }
-            }
-          },
-          {
-            id: "Swimming Hall",
-            url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/Swimminghall_Cleaning/FeatureServer/2",
-            apiKey: apiKey,
-            pointToLayer: function (feature, latlng) {
-              return L.marker(latlng, {
-                icon: L.icon({
-                  iconUrl: '../images/swim.svg',
-                  iconSize: [20, 20],
-                  iconAnchor: [15, 15]
-                }),
-                title: "Swimming Hall"
-              });
-            },
-            onEachFeature: function (feature, layer) {
-              if (feature.properties) {
-                let popupContent = "";
-                for (let prop in feature.properties) {
-                  popupContent += `<b>${prop}:</b> ${feature.properties[prop]}<br>`;
-                }
-                layer.bindPopup(popupContent);
-              }
-            }
-          },
-          {
-            id: "Badezone",
-            url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/Badezone_Denmark_EEA_XYTableToPoint/FeatureServer/0",
-            apiKey: apiKey,
-            pointToLayer: function (feature, latlng) {
-              return L.marker(latlng, {
-                icon: L.icon({
-                  iconUrl: '../images/bath.svg',
-                  iconSize: [20, 20],
-                  iconAnchor: [15, 15]
-                }),
-                title: "Badezone"
-              });
-            },
-            onEachFeature: function (feature, layer) {
-              if (feature.properties) {
-                let popupContent = "";
-                for (let prop in feature.properties) {
-                  popupContent += `<b>${prop}:</b> ${feature.properties[prop]}<br>`;
-                }
-                layer.bindPopup(popupContent);
-              }
-            }
-          }
-        ];
-      
-        // Add GeoJSON layers to respective Layer Groups
-        geojsonLayers.forEach(layer => {
-          const geojsonLayer = L.esri.featureLayer({
-            url: layer.url,
-            apiKey: layer.apiKey,
-            pointToLayer: layer.pointToLayer,
-            onEachFeature: layer.onEachFeature
-          });
-      
-          switch (layer.id) {
-            case "Fountain":
-              geojsonLayer.addTo(fountainLayer);
-              break;
-            case "Drinking Post":
-              geojsonLayer.addTo(drinkingPostLayer);
-              break;
-            case "Swimming Hall":
-              geojsonLayer.addTo(swimmingHallLayer);
-              break;
-            case "Badezone":
-              geojsonLayer.addTo(badezoneLayer);
-              break;
-            default:
-              break;
-          }
-        });
-      
-        // Define your layer names with HTML for the icons
-        const overlayMapsWithIcons = {
-          "<img src='../images/fountain.svg' width='20px' height='20px'> Fountain": fountainLayer,
-          "<img src='../images/hydrant.svg' width='20px' height='20px'> Drinking Post": drinkingPostLayer,
-          "<img src='../images/swim.svg' width='20px' height='20px'> Swimming Hall": swimmingHallLayer,
-          "<img src='../images/bath.svg' width='20px' height='20px'> Badezone": badezoneLayer,
-        };
-      
-        // Add layer control with initial settings
-        var layerControl = L.control.layers(null, overlayMapsWithIcons, {
-          collapsed: false, // Keeps the control panel open by default
-          autoZIndex: false, // Ensures that all layers are turned off initially
-          checked: true // Ensure all layers are checked initially
-        }).addTo(map);
-      
-        // Add current location control
-        L.control.locate().addTo(map);
-      
-        // Add search control
-        L.Control.geocoder({
-          geocodeResult: function(result) {
-            if (map.options.maxBounds.contains(result.center)) {
-              this._map.fitBounds(result.bbox);
-            } else {
-              alert("The location you selected is outside the bounds of the map.");
-            }
-          }
-        }).addTo(map);
-      </script>
-    </div>
-    
-    
-    <footer id="my-footer" class="fixit">
-      <h2>Data Sources</h2>
-          <p>
-              This project utilizes data provided by the European Environmental Agency and OpenData from Københavns Kommune. We gratefully acknowledge the use of these data sources under the Attribution 4.0 International (CC BY 4.0) license.
-              <br> <br> 
-              European Environmental Agency
-              The data from the European Environmental Agency is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. This means you are free to share (copy and redistribute the material in any medium or format) and adapt (remix, transform, and build upon the material) for any purpose, even commercially, as long as appropriate credit is given, a link to the license is provided, and any changes made are indicated. For more information, visit the CC BY 4.0 license page.
-              <br> <br> 
-              OpenData from Københavns Kommune
-              The data from OpenData from Københavns Kommune is also licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. This license allows for sharing and adapting the data for any purpose, provided proper attribution is given, a link to the license is included, and any changes made are noted. More details about this license can be found on the CC BY 4.0 license page.
-              <br> <br> 
-              In accordance with the terms of these licenses, we have provided appropriate credits for all the data used in this project, and any modifications to the original data have been clearly indicated. We are grateful to the European Environmental Agency and OpenData from Københavns Kommune for making their data available to the public and for their commitment to open data sharing.  
-          </p>   
-    </footer>
 
-  
+    <div id="map" style="width: 100%; height: calc(100% - 115px);"></div>
+      <div class="copyright-div">
+    <p>Leaflet, Esri, Open Data DK, European Environment Agency</p>
+  </div>
+    <script>
+      const southWest = L.latLng(55.528, 12.376),
+            northEast = L.latLng(55.839, 12.730),
+            bounds = L.latLngBounds(southWest, northEast);
+      const map = L.map("map", {
+        minZoom: 10,
+        maxZoom: 18,
+        maxBounds: bounds
+      });
+    
+      map.setView([55.68270923835285, 12.580772656184847], 13);
+    
+      const apiKey = "AAPK3cfa941c1a374bc7b6276f09068109a4-xZs_tTNqYjqGQTbLNNcyxfFh4wpW8wALwH1-Zs0c9tLGv2YKHrHjFyePuqKpp2g";
+    
+      // Basemap layer
+      const basemapEnum = "44e260d5dd834f428d92322c5e1fe2c5";
+      const basemapLayer = L.esri.Vector.vectorBasemapLayer(basemapEnum, {
+        apiKey: apiKey
+      }).addTo(map);
+    
+      // Create Layer Groups for GeoJSON layers
+      const fountainLayer = L.layerGroup();
+      const drinkingPostLayer = L.layerGroup();
+      const swimmingHallLayer = L.layerGroup();
+      const badezoneLayer = L.layerGroup();
+    
+      // GeoJSON layers
+      const geojsonLayers = [
+        {
+          id: "Fountain",
+          url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/waterinstallations_Cleaning/FeatureServer/1",
+          apiKey: apiKey,
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
+              icon: L.icon({
+                iconUrl: '../images/fountain.svg',
+                iconSize: [20, 20],
+                iconAnchor: [15, 15]
+              }),
+              title: "Fountain"
+            });
+          },
+          onEachFeature: function (feature, layer) {
+            if (feature.properties) {
+                let popupContent = `<p class="popup-content"><b></b> ${feature.properties.navn}</p>`;
+                layer.bindPopup(popupContent);
+            }
+          }
+        },
+        {
+          id: "Drinking Post",
+          url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/CPH_Drinking_Post/FeatureServer/15",
+          apiKey: apiKey,
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
+              icon: L.icon({
+                iconUrl: '../images/hydrant.svg',
+                iconSize: [20, 20],
+                iconAnchor: [15, 15]
+              }),
+              title: "Drinking Post"
+            });
+          },
+          onEachFeature: function (feature, layer) {
+            if (feature.properties) {
+                let popupContent = `<p class="popup-content"><b></b> ${feature.properties.navn}</p>`;
+                layer.bindPopup(popupContent);
+            }
+          }
+        },
+        {
+          id: "Swimming Hall",
+          url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/Swimminghall_Cleaning/FeatureServer/2",
+          apiKey: apiKey,
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
+              icon: L.icon({
+                iconUrl: '../images/swim.svg',
+                iconSize: [20, 20],
+                iconAnchor: [15, 15]
+              }),
+              title: "Swimming Hall"
+            });
+          },
+          onEachFeature: function (feature, layer) {
+            if (feature.properties) {
+              let popupContent = `<p class="popup-content"><b></b> ${feature.properties.navn}</p>`;
+              layer.bindPopup(popupContent);
+            }
+          }
+        },
+        {
+          id: "Badezone",
+          url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/Badezone_Denmark_EEA_XYTableToPoint/FeatureServer/0",
+          apiKey: apiKey,
+          pointToLayer: function (feature, latlng) {
+            return L.marker(latlng, {
+              icon: L.icon({
+                iconUrl: '../images/bath.svg',
+                iconSize: [20, 20],
+                iconAnchor: [15, 15]
+              }),
+              title: "Badezone"
+            });
+          },
+          onEachFeature: function (feature, layer) {
+            if (feature.properties) {
+                let popupContent = `<p class="popup-content"><b></b> ${feature.properties.nameText}</p>`;
+                layer.bindPopup(popupContent);
+            }
+          }
+        }
+      ];
+    
+      // Add GeoJSON layers to respective Layer Groups
+      geojsonLayers.forEach(layer => {
+        const geojsonLayer = L.esri.featureLayer({
+          url: layer.url,
+          apiKey: layer.apiKey,
+          pointToLayer: layer.pointToLayer,
+          onEachFeature: layer.onEachFeature
+        });
+    
+        switch (layer.id) {
+          case "Fountain":
+            geojsonLayer.addTo(fountainLayer);
+            break;
+          case "Drinking Post":
+            geojsonLayer.addTo(drinkingPostLayer);
+            break;
+          case "Swimming Hall":
+            geojsonLayer.addTo(swimmingHallLayer);
+            break;
+          case "Badezone":
+            geojsonLayer.addTo(badezoneLayer);
+            break;
+          default:
+            break;
+        }
+      });
+    
+      // Define your layer names with HTML for the icons
+      const overlayMapsWithIcons = {
+        "<img src='../images/fountain.svg' width='20px' height='20px'> Fountain": fountainLayer,
+        "<img src='../images/hydrant.svg' width='20px' height='20px'> Drinking Post": drinkingPostLayer,
+        "<img src='../images/swim.svg' width='20px' height='20px'> Swimming Hall": swimmingHallLayer,
+        "<img src='../images/bath.svg' width='20px' height='20px'> Badezone": badezoneLayer,
+      };
+    
+      // Add layer control with initial settings
+      var layerControl = L.control.layers(null, overlayMapsWithIcons, {
+        collapsed: false, // Keeps the control panel open by default
+        autoZIndex: false, // Ensures that all layers are turned off initially
+        checked: true // Ensure all layers are checked initially
+      }).addTo(map);
+    
+      // Add current location control
+      L.control.locate().addTo(map);
+    
+      // Add search control
+      L.Control.geocoder({
+        geocodeResult: function(result) {
+          if (map.options.maxBounds.contains(result.center)) {
+            this._map.fitBounds(result.bbox);
+          } else {
+            alert("The location you selected is outside the bounds of the map.");
+          }
+        }
+      }).addTo(map);
+    </script>
+    
+    
+    
+    
+
+    <!--<footer id="my-footer">-->
+    <!--</footer>-->
   </body>
 </html>

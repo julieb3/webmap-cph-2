@@ -325,6 +325,21 @@ table {
         top: 180px;
         left: -80px;
     }
+    .leaflet-popup-content-wrapper {
+        padding: 20px;
+        background-color: var(--col-sec);
+        border-radius: 10px;
+        border: 2px solid var(--col-prim);
+    }
+    .popup-content {
+        font-size: 1rem;
+        font-weight: 500;
+        line-height: 1.5;
+        padding: 15px;
+        color: var(--col-prim);
+        background-color: var(--col-sec);
+        font-family: var(--body-font);
+    }
 
     #language-select {
         font-family: 'Raleway', sans-serif;
@@ -417,6 +432,7 @@ footer{
 }
 footer p{
     font-size: .8rem;
+    word-spacing: 2px;
 }
 footer h2{
     color: white;

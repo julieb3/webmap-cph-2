@@ -235,6 +235,12 @@ table {
         padding: 1rem 0;
     }
 
+    P{
+        line-height: 150%;
+    }
+
+   
+
     .cls-1{fill:var(--col-p-light);stroke-width:0px;}
     .blueback{
         background-color: var(--col-p-light);
@@ -363,8 +369,10 @@ table {
         font-weight: var(--supa-bold);
         font-family: var(--title-font);
         font-size: 2rem;
-        justify-content: center;
+        justify-content: left;
         padding: 1rem;
+        background-color: var(--col-p-light);
+        color: white;
         
 
     }
@@ -396,8 +404,22 @@ table {
 
 
 /* FOOTER-------------------------------------------------*/
+ /* Attempting to fix that the footer overlaps with the map on the map page */
+ .fixit{
+    margin-top: 90vh;
+}
+
 footer{ 
-    height: 200px;
+    padding: 25px 10px 175px 10px;
+    background-color: var(--col-p-light);
+    color: white;
+}
+footer p{
+    font-size: .8rem;
+}
+footer h2{
+    color: white;
+    font-size: 1rem;
 }
 
 
@@ -426,6 +448,9 @@ footer{
 /* HEADER-------------------------------------------------*/
     .my-title{
         font-size: 2.75rem;
+        background-color: var(--col-prim);
+        color: white;
+        justify-content: center;
         
     }
     nav a img{
@@ -436,6 +461,7 @@ footer{
         padding: 1rem;
         font-size: 1.5rem;
     }
+
 
 
 /* HOMEPAGE+-------------------------------------------------*/
@@ -458,6 +484,11 @@ footer{
 
 
 /* FOOTER-------------------------------------------------*/
+
+    footer{
+        margin-top: 60px;
+    }
+
 
 
 }
@@ -513,9 +544,7 @@ p{
 
 
 /* FOOTER-------------------------------------------------*/
-
-
-
+   
 
 
 }

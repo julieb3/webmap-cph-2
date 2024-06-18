@@ -133,10 +133,10 @@
                 
             </section>
         </div>
-
-        <footer id="my-footer">
-            <h2>Data Sources</h2>
-                <p>
+        <img class='mermaid' src="images/littlemermaid.jpg" alt="The Little Mermaid">
+        <footer>
+            <h2 id="data-header">Data Sources</h2>
+                <p id="my-footer">
                     This project utilizes data provided by the European Environmental Agency and OpenData from Københavns Kommune. We gratefully acknowledge the use of these data sources under the Attribution 4.0 International (CC BY 4.0) license.
                     <br> <br> 
                     European Environmental Agency
@@ -146,7 +146,12 @@
                     The data from OpenData from Københavns Kommune is also licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. This license allows for sharing and adapting the data for any purpose, provided proper attribution is given, a link to the license is included, and any changes made are noted. More details about this license can be found on the CC BY 4.0 license page.
                     <br> <br> 
                     In accordance with the terms of these licenses, we have provided appropriate credits for all the data used in this project, and any modifications to the original data have been clearly indicated. We are grateful to the European Environmental Agency and OpenData from Københavns Kommune for making their data available to the public and for their commitment to open data sharing.  
-                </p>   
+                </p> 
+                <p id="'my-footer">
+                    Photo: Copenhagen by Luca Sartoni
+                    Source: <em><a href="https://www.flickr.com/photos/lucasartoni/33297689162/in/photolist-SJpmV1-RAmbd3-foRqqs-foRuJj-SYgysp-SUERNW-tZTeYQ-foBaD2-foRg7d-foReL9-SLR2b6-SJpayU-6R7f6P-zU8UW5-foBdha-SD4Dib-foB8V2-foBfiM-RJe1ac-RJjjei-SLVNTv-foB8bt-foB4MB-foB1En-RFKDzb-RCU6kR-SUFMjo-4ANLwH-4ANLmz-8hCJtC-39MoWW-4ANQjR-uhtSHe-uh5L95-zWpMV6-zYk7QE-RCU5ND-nifyTQ-BciBrn-ALJkzh-4vJxg-2bieS-4vJ9m-4PjCqs-d8HqC-uc33fU-d8HyS-CmWWFy-BX8b6N-d8HPA" target="_blank" rel="noopener noreferrer">Copenhagen's Water Network</a></em> by Lucas Artoni is licensed under <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener noreferrer">CC BY 2.0</a>
+                    License: CC BY-SA 2.0 ATTRIBUTION-SHAREALIKE 2.0 GENERIC
+                </p>  
                 
 
         </footer>
@@ -160,6 +165,7 @@
         const title = document.getElementById('title');
         const mapLink = document.getElementById('map-link');
         const sourcesLink = document.getElementById('sources-link');
+        const dataHeader = document.getElementById('data-header');
         const myfooter = document.getElementById('my-footer');
         const languageSelect = document.getElementById('language-select');
     
@@ -171,7 +177,8 @@
                 title.textContent = 'Københavns Vandkort'; // Danish translation
                 mapLink.textContent = 'kort'; // Danish translation
                 sourcesLink.textContent = 'kilder'; // Danish translation
-                myfooter.textContent = 'Datakilder: Dette projekt benytter data fra Det Europæiske Miljøagentur og OpenData fra Københavns Kommune. Vi anerkender med taknemmelighed brugen af disse datakilder under Attribution 4.0 International (CC BY 4.0) licensen. Det Europæiske Miljøagentur Dataene fra Det Europæiske Miljøagentur er licenseret under Creative Commons Attribution 4.0 International (CC BY 4.0) licensen. Dette betyder, at du frit kan dele (kopiere og distribuere materialet i ethvert medium eller format) og tilpasse (remixe, transformere og bygge videre på materialet) til ethvert formål, også kommercielt, så længe der gives passende kredit, et link til licensen er inkluderet, og eventuelle ændringer angives. For mere information, besøg CC BY 4.0 licenssiden. OpenData fra Københavns Kommune Dataene fra OpenData fra Københavns Kommune er også licenseret under Creative Commons Attribution 4.0 International (CC BY 4.0) licensen. Denne licens tillader deling og tilpasning af dataene til ethvert formål, forudsat at der gives korrekt kredit, et link til licensen er inkluderet, og eventuelle ændringer angives. Flere detaljer om denne licens kan findes på CC BY 4.0 licenssiden. I overensstemmelse med vilkårene for disse licenser har vi givet passende kreditering for alle de data, der er brugt i dette projekt, og eventuelle ændringer i de oprindelige data er tydeligt angivet. Vi er taknemmelige over for Det Europæiske Miljøagentur og OpenData fra Københavns Kommune for at gøre deres data tilgængelige for offentligheden og for deres engagement i deling af åbne data.'
+                dataHeader.textContent = 'Datakilder'; // Danish translation
+                myfooter.textContent = 'Dette projekt benytter data fra Det Europæiske Miljøagentur og OpenData fra Københavns Kommune. Vi anerkender med taknemmelighed brugen af disse datakilder under Attribution 4.0 International (CC BY 4.0) licensen. Det Europæiske Miljøagentur Dataene fra Det Europæiske Miljøagentur er licenseret under Creative Commons Attribution 4.0 International (CC BY 4.0) licensen. Dette betyder, at du frit kan dele (kopiere og distribuere materialet i ethvert medium eller format) og tilpasse (remixe, transformere og bygge videre på materialet) til ethvert formål, også kommercielt, så længe der gives passende kredit, et link til licensen er inkluderet, og eventuelle ændringer angives. For mere information, besøg CC BY 4.0 licenssiden. OpenData fra Københavns Kommune Dataene fra OpenData fra Københavns Kommune er også licenseret under Creative Commons Attribution 4.0 International (CC BY 4.0) licensen. Denne licens tillader deling og tilpasning af dataene til ethvert formål, forudsat at der gives korrekt kredit, et link til licensen er inkluderet, og eventuelle ændringer angives. Flere detaljer om denne licens kan findes på CC BY 4.0 licenssiden. I overensstemmelse med vilkårene for disse licenser har vi givet passende kreditering for alle de data, der er brugt i dette projekt, og eventuelle ændringer i de oprindelige data er tydeligt angivet. Vi er taknemmelige over for Det Europæiske Miljøagentur og OpenData fra Københavns Kommune for at gøre deres data tilgængelige for offentligheden og for deres engagement i deling af åbne data.'
             } else if (languageSelect.value === 'en') {
                 mainHeading.textContent = 'Finding your refreshment';
                 mainParagraph.textContent = 'Welcome to our water map of Copenhagen, Denmark. This city\'s waterways weave through urban life, creating a unique tapestry of culture, recreation, and sustainability. Explore the intricate network of canals and harbors that define our city\'s landscape, offering both practical transport routes and stunning scenic vistas. In the summertime, Copenhagen\'s waters come alive with activity. From kayaking through historic canals to swimming in pristine harbor baths, theres no better way to experience the charm and vitality of our city. Dive into a summer of unforgettable water adventures and discover why Copenhagen is the perfect destination for water lovers.';
@@ -179,7 +186,8 @@
                 title.textContent = 'Copenhagen Water Map'; // Original English text
                 mapLink.textContent = 'map'; // Original English text
                 sourcesLink.textContent = 'sources'; // Original English text
-                myfooter.textContetn = 'Data Sources: This project utilizes data provided by the European Environmental Agency and OpenData from Københavns Kommune. We gratefully acknowledge the use of these data sources under the Attribution 4.0 International (CC BY 4.0) license. European Environmental Agency. The data from the European Environmental Agency is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. This means you are free to share (copy and redistribute the material in any medium or format) and adapt (remix, transform, and build upon the material) for any purpose, even commercially, as long as appropriate credit is given, a link to the license is provided, and any changes made are indicated. For more information, visit the CC BY 4.0 license page. OpenData from Københavns Kommune. The data from OpenData from Københavns Kommune is also licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. This license allows for sharing and adapting the data for any purpose, provided proper attribution is given, a link to the license is included, and any changes made are noted. More details about this license can be found on the CC BY 4.0 license page. In accordance with the terms of these licenses, we have provided appropriate credits for all the data used in this project, and any modifications to the original data have been clearly indicated. We are grateful to the European Environmental Agency and OpenData from Københavns Kommune for making their data available to the public and for their commitment to open data sharing.'
+                dataHeader.textContent = 'Data Sources'; // Original English text
+                myfooter.textContent = 'This project utilizes data provided by the European Environmental Agency and OpenData from Københavns Kommune. We gratefully acknowledge the use of these data sources under the Attribution 4.0 International (CC BY 4.0) license. European Environmental Agency. The data from the European Environmental Agency is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. This means you are free to share (copy and redistribute the material in any medium or format) and adapt (remix, transform, and build upon the material) for any purpose, even commercially, as long as appropriate credit is given, a link to the license is provided, and any changes made are indicated. For more information, visit the CC BY 4.0 license page. OpenData from Københavns Kommune. The data from OpenData from Københavns Kommune is also licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. This license allows for sharing and adapting the data for any purpose, provided proper attribution is given, a link to the license is included, and any changes made are noted. More details about this license can be found on the CC BY 4.0 license page. In accordance with the terms of these licenses, we have provided appropriate credits for all the data used in this project, and any modifications to the original data have been clearly indicated. We are grateful to the European Environmental Agency and OpenData from Københavns Kommune for making their data available to the public and for their commitment to open data sharing.'
             }
         });
     </script>

@@ -153,7 +153,13 @@ table {
         top: 70px;
       }
 
-
+    .mermaid{
+        width: 90%;
+        height: auto;
+        margin-top: 295px;
+        position: relative;
+        left: 5%;
+    }
     html {
         background-color: var(--col-back);
         color: var(--col-text);
@@ -237,8 +243,6 @@ table {
     P{
         line-height: 150%;
     }
-
-   
 
     .cls-1{fill:var(--col-p-light);stroke-width:0px;}
     .blueback{
@@ -421,7 +425,7 @@ table {
 /* FOOTER-------------------------------------------------*/
  /* Attempting to fix that the footer overlaps with the map on the map page */
  .fixit{
-    margin-top: 90vh;
+    margin-top: 0vh;
 }
 
 footer{ 
@@ -459,7 +463,6 @@ footer h2{
     h3{
         font-size: 2.125rem;
     }
-
 
 
 /* HEADER-------------------------------------------------*/
@@ -503,7 +506,7 @@ footer h2{
 /* FOOTER-------------------------------------------------*/
 
     footer{
-        margin-top: 400px;
+        margin-top: 40px;
     }
 
 

@@ -407,7 +407,7 @@ table {
         justify-content: left;
         padding: 1rem;
         background-color: var(--col-p-light);
-        color: white;
+        color: var(--col-sec);
         
 
     }
@@ -485,7 +485,7 @@ footer h2{
     .my-title{
         font-size: 2.75rem;
         background-color: var(--col-prim);
-        color: white;
+        color: var(--col-sec);
         justify-content: center;
         
     }

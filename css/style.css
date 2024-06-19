@@ -153,6 +153,10 @@ table {
         top: 70px;
       }
 
+      .normal-me{
+        font-size: 1rem;
+      }
+
     .mermaid{
         width: 90%;
         height: auto;

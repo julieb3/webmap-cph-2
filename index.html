@@ -133,7 +133,7 @@
                 
             </section>
         </div>
-        <a href="pages/map.html">
+        <a href="pages/mermaidmap.html">
             <img id="mermaid" class='mermaid' src="images/littlemermaid.jpg" alt="The Little Mermaid">
         </a>
         <footer>
@@ -167,7 +167,6 @@
             this.parentNode.style.position = 'relative';
             this.parentNode.insertBefore(text, this.nextSibling);
         });
-
         document.getElementById('mermaid').addEventListener('mouseout', function() {
             let text = this.nextSibling;
             if (text) {
@@ -190,21 +189,21 @@
                 mainHeading.textContent = 'Find din forfriskning';
                 mainParagraph.textContent = 'Velkommen til vores vandkort over København, Danmark. Byens vandveje væver sig gennem det urbane liv og skaber et unikt væv af kultur, rekreation og bæredygtighed. Udforsk det indviklede netværk af kanaler og havne, der definerer byens landskab og tilbyder både praktiske transportruter og betagende naturskønne udsigter. Om sommeren kommer Københavns vande til live med aktivitet. Fra kajaksejlads gennem historiske kanaler til svømning i rene havnebade, er der ingen bedre måde at opleve byens charme og vitalitet på. Dyk ned i en sommer med uforglemmelige vandeventyr og opdag, hvorfor København er den perfekte destination for vandelskere.';
                 mainPeople.textContent = 'Projekt af Maddy, Will, Tanya, and Juliette';
-                title.textContent = 'Københavns Vandkort'; // Danish translation
+                title.textContent = 'Københavns Vandkort'; 
                 hoverText.textContent = 'Den lille havfrue statue';
-                mapLink.textContent = 'kort'; // Danish translation
-                sourcesLink.textContent = 'kilder'; // Danish translation
-                dataHeader.textContent = 'Datakilder'; // Danish translation
+                mapLink.textContent = 'kort'; 
+                sourcesLink.textContent = 'kilder';
+                dataHeader.textContent = 'Datakilder';
                 myfooter.textContent = 'Dette projekt benytter data fra Det Europæiske Miljøagentur og OpenData fra Københavns Kommune. Vi anerkender med taknemmelighed brugen af disse datakilder under Attribution 4.0 International (CC BY 4.0) licensen. Det Europæiske Miljøagentur Dataene fra Det Europæiske Miljøagentur er licenseret under Creative Commons Attribution 4.0 International (CC BY 4.0) licensen. Dette betyder, at du frit kan dele (kopiere og distribuere materialet i ethvert medium eller format) og tilpasse (remixe, transformere og bygge videre på materialet) til ethvert formål, også kommercielt, så længe der gives passende kredit, et link til licensen er inkluderet, og eventuelle ændringer angives. For mere information, besøg CC BY 4.0 licenssiden. OpenData fra Københavns Kommune Dataene fra OpenData fra Københavns Kommune er også licenseret under Creative Commons Attribution 4.0 International (CC BY 4.0) licensen. Denne licens tillader deling og tilpasning af dataene til ethvert formål, forudsat at der gives korrekt kredit, et link til licensen er inkluderet, og eventuelle ændringer angives. Flere detaljer om denne licens kan findes på CC BY 4.0 licenssiden. I overensstemmelse med vilkårene for disse licenser har vi givet passende kreditering for alle de data, der er brugt i dette projekt, og eventuelle ændringer i de oprindelige data er tydeligt angivet. Vi er taknemmelige over for Det Europæiske Miljøagentur og OpenData fra Københavns Kommune for at gøre deres data tilgængelige for offentligheden og for deres engagement i deling af åbne data.'
             } else if (languageSelect.value === 'en') {
                 mainHeading.textContent = 'Finding your refreshment';
                 mainParagraph.textContent = 'Welcome to our water map of Copenhagen, Denmark. This city\'s waterways weave through urban life, creating a unique tapestry of culture, recreation, and sustainability. Explore the intricate network of canals and harbors that define our city\'s landscape, offering both practical transport routes and stunning scenic vistas. In the summertime, Copenhagen\'s waters come alive with activity. From kayaking through historic canals to swimming in pristine harbor baths, theres no better way to experience the charm and vitality of our city. Dive into a summer of unforgettable water adventures and discover why Copenhagen is the perfect destination for water lovers.';
                 mainPeople.textContent = 'Project by Maddy, Will, Tanya, and Juliette';
                 hoverText.textContent = 'The Little Mermaid statue';
-                title.textContent = 'Copenhagen Water Map'; // Original English text
-                mapLink.textContent = 'map'; // Original English text
-                sourcesLink.textContent = 'sources'; // Original English text
-                dataHeader.textContent = 'Data Sources'; // Original English text
+                title.textContent = 'Copenhagen Water Map'; 
+                mapLink.textContent = 'map'; 
+                sourcesLink.textContent = 'sources'; 
+                dataHeader.textContent = 'Data Sources'; 
                 myfooter.textContent = 'This project utilizes data provided by the European Environmental Agency and OpenData from Københavns Kommune. We gratefully acknowledge the use of these data sources under the Attribution 4.0 International (CC BY 4.0) license. European Environmental Agency. The data from the European Environmental Agency is licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. This means you are free to share (copy and redistribute the material in any medium or format) and adapt (remix, transform, and build upon the material) for any purpose, even commercially, as long as appropriate credit is given, a link to the license is provided, and any changes made are indicated. For more information, visit the CC BY 4.0 license page. OpenData from Københavns Kommune. The data from OpenData from Københavns Kommune is also licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) license. This license allows for sharing and adapting the data for any purpose, provided proper attribution is given, a link to the license is included, and any changes made are noted. More details about this license can be found on the CC BY 4.0 license page. In accordance with the terms of these licenses, we have provided appropriate credits for all the data used in this project, and any modifications to the original data have been clearly indicated. We are grateful to the European Environmental Agency and OpenData from Københavns Kommune for making their data available to the public and for their commitment to open data sharing.'
             }
         });

@@ -344,7 +344,23 @@ table {
         background-color: var(--col-sec);
         font-family: var(--body-font);
     }
-
+    .mermaid {
+        transition: opacity 0.5s;
+    }
+    
+    .mermaid:hover {
+        opacity: 0.5;
+    }
+    .hover-text {
+        position: absolute;
+        color: var(--col-prim);
+        top: -1600%;
+        left: 55%;
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        font-size: 25px;
+        font-weight: bold;
+    }
     #language-select {
         font-family: 'Raleway', sans-serif;
         color: var(--col-prim);
@@ -424,8 +440,8 @@ table {
 
 /* FOOTER-------------------------------------------------*/
  /* Attempting to fix that the footer overlaps with the map on the map page */
- .fixit{
-    margin-top: 0vh;
+.fixit{
+    margin-top: 90vh;
 }
 
 footer{ 

@@ -133,7 +133,9 @@
                 
             </section>
         </div>
-        <img class='mermaid' src="images/littlemermaid.jpg" alt="The Little Mermaid">
+        <a href="pages/map.html">
+            <img id="mermaid" class='mermaid' src="images/littlemermaid.jpg" alt="The Little Mermaid">
+        </a>
         <footer>
             <h2 id="data-header">Data Sources</h2>
                 <p id="my-footer">
@@ -148,17 +150,30 @@
                     In accordance with the terms of these licenses, we have provided appropriate credits for all the data used in this project, and any modifications to the original data have been clearly indicated. We are grateful to the European Environmental Agency and OpenData from Københavns Kommune for making their data available to the public and for their commitment to open data sharing.  
                 </p> 
                 <p id="'my-footer">
-                    Photo: Copenhagen by Luca Sartoni
-                    Source: <em><a href="https://www.flickr.com/photos/lucasartoni/33297689162/in/photolist-SJpmV1-RAmbd3-foRqqs-foRuJj-SYgysp-SUERNW-tZTeYQ-foBaD2-foRg7d-foReL9-SLR2b6-SJpayU-6R7f6P-zU8UW5-foBdha-SD4Dib-foB8V2-foBfiM-RJe1ac-RJjjei-SLVNTv-foB8bt-foB4MB-foB1En-RFKDzb-RCU6kR-SUFMjo-4ANLwH-4ANLmz-8hCJtC-39MoWW-4ANQjR-uhtSHe-uh5L95-zWpMV6-zYk7QE-RCU5ND-nifyTQ-BciBrn-ALJkzh-4vJxg-2bieS-4vJ9m-4PjCqs-d8HqC-uc33fU-d8HyS-CmWWFy-BX8b6N-d8HPA" target="_blank" rel="noopener noreferrer">Copenhagen's Water Network</a></em> by Lucas Artoni is licensed under <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener noreferrer">CC BY 2.0</a>
-                    License: CC BY-SA 2.0 ATTRIBUTION-SHAREALIKE 2.0 GENERIC
+                    Photo Source: <em><a href="https://www.flickr.com/photos/lucasartoni/33297689162/in/photolist-SJpmV1-RAmbd3-foRqqs-foRuJj-SYgysp-SUERNW-tZTeYQ-foBaD2-foRg7d-foReL9-SLR2b6-SJpayU-6R7f6P-zU8UW5-foBdha-SD4Dib-foB8V2-foBfiM-RJe1ac-RJjjei-SLVNTv-foB8bt-foB4MB-foB1En-RFKDzb-RCU6kR-SUFMjo-4ANLwH-4ANLmz-8hCJtC-39MoWW-4ANQjR-uhtSHe-uh5L95-zWpMV6-zYk7QE-RCU5ND-nifyTQ-BciBrn-ALJkzh-4vJxg-2bieS-4vJ9m-4PjCqs-d8HqC-uc33fU-d8HyS-CmWWFy-BX8b6N-d8HPA" target="_blank" rel="noopener noreferrer">Copenhagen's Water Network</a></em> by Lucas Artoni is licensed under <a href="https://creativecommons.org/licenses/by/2.0/" target="_blank" rel="noopener noreferrer">CC BY 2.0</a>
                 </p>  
                 
 
         </footer>
         <script src="script/bouncingBall.js"></script>
 
-    <!-- JavaScript for handling language selection -->
+    
     <script>
+        document.getElementById('mermaid').addEventListener('mouseover', function() {
+            let textContent = 'The Little Mermaid statue';
+            let text = document.createElement('div');
+            text.className = 'hover-text'; 
+            text.innerHTML = textContent;
+            this.parentNode.style.position = 'relative';
+            this.parentNode.insertBefore(text, this.nextSibling);
+        });
+
+        document.getElementById('mermaid').addEventListener('mouseout', function() {
+            let text = this.nextSibling;
+            if (text) {
+                text.remove();
+            }
+        });
         const mainHeading = document.getElementById('main-heading');
         const mainParagraph = document.getElementById('main-paragraph');
         const mainPeople = document.getElementById('people');
@@ -167,6 +182,7 @@
         const sourcesLink = document.getElementById('sources-link');
         const dataHeader = document.getElementById('data-header');
         const myfooter = document.getElementById('my-footer');
+        const hoverText = document.querySelector('.hover-text');
         const languageSelect = document.getElementById('language-select');
     
         languageSelect.addEventListener('change', function() {
@@ -175,6 +191,7 @@
                 mainParagraph.textContent = 'Velkommen til vores vandkort over København, Danmark. Byens vandveje væver sig gennem det urbane liv og skaber et unikt væv af kultur, rekreation og bæredygtighed. Udforsk det indviklede netværk af kanaler og havne, der definerer byens landskab og tilbyder både praktiske transportruter og betagende naturskønne udsigter. Om sommeren kommer Københavns vande til live med aktivitet. Fra kajaksejlads gennem historiske kanaler til svømning i rene havnebade, er der ingen bedre måde at opleve byens charme og vitalitet på. Dyk ned i en sommer med uforglemmelige vandeventyr og opdag, hvorfor København er den perfekte destination for vandelskere.';
                 mainPeople.textContent = 'Projekt af Maddy, Will, Tanya, and Juliette';
                 title.textContent = 'Københavns Vandkort'; // Danish translation
+                hoverText.textContent = 'Den lille havfrue statue';
                 mapLink.textContent = 'kort'; // Danish translation
                 sourcesLink.textContent = 'kilder'; // Danish translation
                 dataHeader.textContent = 'Datakilder'; // Danish translation
@@ -183,6 +200,7 @@
                 mainHeading.textContent = 'Finding your refreshment';
                 mainParagraph.textContent = 'Welcome to our water map of Copenhagen, Denmark. This city\'s waterways weave through urban life, creating a unique tapestry of culture, recreation, and sustainability. Explore the intricate network of canals and harbors that define our city\'s landscape, offering both practical transport routes and stunning scenic vistas. In the summertime, Copenhagen\'s waters come alive with activity. From kayaking through historic canals to swimming in pristine harbor baths, theres no better way to experience the charm and vitality of our city. Dive into a summer of unforgettable water adventures and discover why Copenhagen is the perfect destination for water lovers.';
                 mainPeople.textContent = 'Project by Maddy, Will, Tanya, and Juliette';
+                hoverText.textContent = 'The Little Mermaid statue';
                 title.textContent = 'Copenhagen Water Map'; // Original English text
                 mapLink.textContent = 'map'; // Original English text
                 sourcesLink.textContent = 'sources'; // Original English text

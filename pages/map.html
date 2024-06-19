@@ -95,6 +95,7 @@
       const drinkingPostLayer = L.layerGroup();
       const swimmingHallLayer = L.layerGroup();
       const badezoneLayer = L.layerGroup();
+      const littlemermaidLayer = L.layerGroup();
     
       // GeoJSON layers
       const geojsonLayers = [
@@ -181,7 +182,28 @@
                 layer.bindPopup(popupContent);
             }
           }
+        },
+        {
+          id: "littlemermaid",
+          url: "https://services1.arcgis.com/DbPykcCwUUYq5zKg/arcgis/rest/services/little_mermaid/FeatureServer",
+          apiKey: apiKey,
+          pointToLayer: function (feature, latlng) {
+              return L.marker(latlng, {
+                  icon: L.icon({
+                      iconUrl: '../images/logo_mermaid1.svg',
+                      iconSize: [23, 23],
+                      iconAnchor: [15, 15]
+                  }),
+                  title: "Little Mermaid"
+              });
+          },
+          onEachFeature: function (feature, layer) {
+            if (feature.properties) {
+                let popupContent = `<p class="popup-content"><b>The Little Mermaid Statue</b></p>`;
+                layer.bindPopup(popupContent);
+            }
         }
+      }
       ];
     
       // Add GeoJSON layers to respective Layer Groups
@@ -206,6 +228,9 @@
           case "Badezone":
             geojsonLayer.addTo(badezoneLayer);
             break;
+          case "littlemermaid": 
+            geojsonLayer.addTo(littlemermaidLayer); 
+            break;
           default:
             break;
         }
@@ -217,6 +242,7 @@
         "<img src='../images/hydrant.svg' width='20px' height='20px'style='vertical-align: middle;'> Drinking Post": drinkingPostLayer,
         "<img src='../images/swim.svg' width='20px' height='20px'style='vertical-align: middle;'> Swimming Hall": swimmingHallLayer,
         "<img src='../images/bath.svg' width='20px' height='20px'style='vertical-align: middle;'> Badezone": badezoneLayer,
+        "<img src='../images/logo_mermaid1.svg' width='20px' height='20px'style='vertical-align: middle;'> Little Mermaid": littlemermaidLayer
       };
     
       // Add layer control with initial settings

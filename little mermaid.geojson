@@ -1,0 +1,8 @@
+{
+"type": "FeatureCollection",
+"name": "little mermaid",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:EPSG::3857" } },
+"features": [
+{ "type": "Feature", "properties": { "xcoord": 1402546.8285487723, "ycoord": 7497514.0358833838 }, "geometry": { "type": "Point", "coordinates": [ 1402546.828548772260547, 7497514.035883383825421 ] } }
+]
+}
